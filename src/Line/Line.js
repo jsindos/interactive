@@ -2,6 +2,7 @@ import React from 'react'
 import { Line } from 'react-chartjs-2'
 
 import Colors from '../utility/Colors'
+import data from './data'
 
 import csv from './world-forecast.csv'
 
@@ -51,11 +52,9 @@ function ordinalSuffixOf (i) {
   return i + 'th'
 }
 
-const data = dataTransform(csv)
-
 export default () =>
   <Line
-    data={data}
+    data={dataTransform(csv)}
     options={{
       title: {
         display: true,
