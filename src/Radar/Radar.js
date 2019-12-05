@@ -1,7 +1,7 @@
 import React from 'react'
 import { Radar } from 'react-chartjs-2'
 
-import usa from '/Users/josephtsindos/Downloads/MM_latest/USA-Table 1.csv'
+import usa from './USA-Table 1.csv'
 
 import Colors from '../utility/Colors'
 import { ROWS } from '../utility/constants'

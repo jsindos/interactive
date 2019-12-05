@@ -1,5 +1,5 @@
-import australia from '/Users/josephtsindos/Downloads/MM_latest/Australia-Table 1.csv'
-import formula from '/Users/josephtsindos/Downloads/MM_latest/Success World-Table 1.csv'
+import australia from './Australia-Table 1.csv'
+import formula from './Success World-Table 1.csv'
 
 import { FORMULA_ROWS, FORMULA_COLUMNS, ROWS, NEGATIVE_IMPACT_ROWS, POSITIVE_IMPACT_ROWS } from '../utility/constants'
 
