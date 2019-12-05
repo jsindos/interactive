@@ -1,7 +1,6 @@
 import React from 'react'
 
-import Line from './Ranking/Line/Line'
-import Questionnaire from './Ranking/Questionnaire/Questionnaire'
+import Ranking from './Ranking/Ranking'
 import Radar from './Radar/Radar'
 import Rule from './Rule'
 
@@ -21,16 +20,7 @@ export default () =>
     <div id='about' className='row'>
       <h2>Maturity Model</h2>
       <p className='large'>We have created a maturity model so that countries and organisations can take stock of where they are now and build a picture of how they compare to other countries or organisations. Allowing them to identify gaps and accelerate growth and ensure that appropriate foundations are in place to ensure long term success of AI.</p>
-      <div style={{
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        maxWidth: '800px'
-        // textAlign: 'center'
-      }}
-      >
-        <Line />
-      </div>
-      <Questionnaire />
+      <Ranking />
       <Rule />
       <Radar />
     </div>

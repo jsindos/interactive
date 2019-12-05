@@ -31,6 +31,8 @@ positiveImpacts = {
   small: positiveImpacts['Small Impact']
 }
 
+// console.log(data)
+
 const countryScores = Object.entries(FORMULA_ROWS).map(([formulaRowName, dataRowName]) => {
   const row = findFormulaRow(formulaRowName)
   const formulaValues = getFormulaValuesAsArray(row)

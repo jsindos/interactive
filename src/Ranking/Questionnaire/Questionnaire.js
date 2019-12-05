@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography'
 
 import { MAX_VALUES } from '../../utility/constants'
 
-export default () => {
+export default ({ onChange }) => {
   return (
     <>
       {
@@ -16,7 +16,7 @@ export default () => {
                 {type}
               </Typography>
               <Slider
-                onChangeCommitted={(_, v) => console.log(v)}
+                onChangeCommitted={(_, v) => onChange(type, v)}
                 defaultValue={30}
                 aria-labelledby='discrete-slider'
                 valueLabelDisplay='auto'
