@@ -1,8 +1,7 @@
 import React from 'react'
 import { Line } from 'react-chartjs-2'
 
-import Colors from '../utility/Colors'
-import data from './data'
+import Colors from '../../utility/Colors'
 
 import csv from './world-forecast.csv'
 

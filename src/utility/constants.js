@@ -42,3 +42,13 @@ export const POSITIVE_IMPACT_ROWS = [
   'Medium Impact Positive External Influence',
   'Small Impact Positive External Influence'
 ]
+
+export const MAX_VALUES = {
+  'Strategy': 100,
+  'Legal': 80,
+  'Funding': 90,
+  'Tech Capacity': 50,
+  'Tech Innovation': 75,
+  'Skills': 40,
+  'Ethics': 50
+}

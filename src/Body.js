@@ -1,10 +1,9 @@
 import React from 'react'
 
-import Line from './Line/Line'
+import Line from './Ranking/Line/Line'
+import Questionnaire from './Ranking/Questionnaire/Questionnaire'
 import Radar from './Radar/Radar'
 import Rule from './Rule'
-
-import Questionnaire from './Questionnaire/Questionnaire'
 
 export default () =>
   <div id='main'>
