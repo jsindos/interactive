@@ -51,9 +51,9 @@ function ordinalSuffixOf (i) {
   return i + 'th'
 }
 
-export default () =>
+export default ({userCountry}) =>
   <Line
-    data={dataTransform(csv)}
+    data={dataTransform(csv.concat([userCountry]))}
     options={{
       title: {
         display: true,

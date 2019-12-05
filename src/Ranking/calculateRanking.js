@@ -1,7 +1,7 @@
 import australia from '/Users/josephtsindos/Downloads/MM_latest/Australia-Table 1.csv'
 import formula from '/Users/josephtsindos/Downloads/MM_latest/Success World-Table 1.csv'
 
-import { FORMULA_ROWS, FORMULA_COLUMNS, ROWS, NEGATIVE_IMPACT_ROWS, POSITIVE_IMPACT_ROWS } from '../../utility/constants'
+import { FORMULA_ROWS, FORMULA_COLUMNS, ROWS, NEGATIVE_IMPACT_ROWS, POSITIVE_IMPACT_ROWS } from '../utility/constants'
 
 const findFormulaRow = (rowName) => formula.find(f => f.Factors === rowName)
 
@@ -31,20 +31,22 @@ positiveImpacts = {
   small: positiveImpacts['Small Impact']
 }
 
-// console.log(data)
+export const calculateScoresFromBaselines = data => {
+  return Object.entries(FORMULA_ROWS).map(([formulaRowName, dataRowName]) => {
+    const row = findFormulaRow(formulaRowName)
+    const formulaValues = getFormulaValuesAsArray(row)
+    const calculatedValues = formulaValues.map(v => v * data[dataRowName])
+    // console.log({
+    //   type: dataRowName,
+    //   values: calculatedValues
+    // })
+    return calculatedValues
+  })
+  // Sum all values together
+    .reduce((accum, current) => current.map((num, i) => num + accum[i]))
+}
 
-const countryScores = Object.entries(FORMULA_ROWS).map(([formulaRowName, dataRowName]) => {
-  const row = findFormulaRow(formulaRowName)
-  const formulaValues = getFormulaValuesAsArray(row)
-  const calculatedValues = formulaValues.map(v => v * data[dataRowName])
-  // console.log({
-  //   type: dataRowName,
-  //   values: calculatedValues
-  // })
-  return calculatedValues
-})
-// Sum all values together
-  .reduce((accum, current) => current.map((num, i) => num + accum[i]))
+const countryScores = calculateScoresFromBaselines(data)
 
 const negativeImpactsCalculated = NEGATIVE_IMPACT_ROWS.map(r => {
   const row = findFormulaRow(r)
@@ -77,3 +79,5 @@ const finalScores = countryScores
   .map((s, i) => s * negativeImpactsCalculated[i])
 // Add positive factors
   .map((v, i) => v + positiveImpactsCalculated[i])
+
+// console.log(finalScores)
