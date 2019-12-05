@@ -51,13 +51,17 @@ function ordinalSuffixOf (i) {
   return i + 'th'
 }
 
-export default ({userCountry}) =>
-  <Line
-    data={dataTransform(csv.concat([userCountry]))}
-    options={{
-      title: {
-        display: true,
-        text: 'Overall World AI Relative Ranking Forecast'
-      }
-    }}
-  />
+export default ({userCountry}) => {
+  const data = dataTransform(csv.concat([userCountry]))
+  return (
+    <Line
+      data={data}
+      options={{
+        title: {
+          display: true,
+          text: 'Overall World AI Relative Ranking Forecast'
+        }
+      }}
+    />
+  )
+}

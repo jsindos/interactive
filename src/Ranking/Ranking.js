@@ -7,39 +7,40 @@ import { ROWS, FORMULA_COLUMNS } from '../utility/constants'
 
 import { calculateScoresFromBaselines } from './calculateRanking'
 
-let state = ROWS.reduce((a, b) => ({ ...a, [b]: 30 }) , {})
-let scores = calculateScoresFromBaselines(state)
-let formattedState = {
-  'Country Name': 'Utopia',
-  ...FORMULA_COLUMNS.reduce((a, b, i) => ({ ...a, [`Score ${b}`]: scores[i] }), {})
-}
-
-const onChange = (type, v) => {
-  state = {
-    ...state,
-    [type]: v
+export default class Ranking extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { baselines: ROWS.reduce((a, b) => ({ ...a, [b]: 30 }) , {}) }
   }
-  scores = calculateScoresFromBaselines(state)
-  formattedState = {
-    'Country Name': 'Utopia',
-    ...FORMULA_COLUMNS.reduce((a, b, i) => ({ ...a, [`Score ${b}`]: scores[i] }), {})
-  }
-  console.log(formattedState)
-}
 
-export default () => {
-  return (
-    <>
-      <div style={{
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        maxWidth: '800px'
-        // textAlign: 'center'
-      }}
-      >
-        <Line userCountry={formattedState} />
-      </div>
-      <Questionnaire onChange={onChange} />
-    </>
-  )
+  onChange(type, v) {
+    this.setState({
+      baselines: {
+        ...this.state.baselines,
+        [type]: v
+      }
+    })
+  }
+
+  render() {
+    const scores = calculateScoresFromBaselines(this.state.baselines)
+    const formattedState = {
+      'Country Name': 'Utopia',
+      ...FORMULA_COLUMNS.reduce((a, b, i) => ({ ...a, [`Score ${b}`]: scores[i] }), {})
+    }
+    return (
+      <>
+        <div style={{
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          maxWidth: '800px'
+          // textAlign: 'center'
+        }}
+        >
+          <Line userCountry={formattedState} />
+        </div>
+        <Questionnaire onChange={this.onChange.bind(this)} />
+      </>
+    )
+  }
 }
