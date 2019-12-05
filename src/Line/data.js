@@ -1,50 +1,7 @@
 import australia from '/Users/josephtsindos/Downloads/MM_latest/Australia-Table 1.csv'
 import formula from '/Users/josephtsindos/Downloads/MM_latest/Success World-Table 1.csv'
 
-const FORMULA_ROWS = {
-  'Legal ': 'Legal',
-  'Ethics': 'Ethics',
-  'Skills': 'Skills',
-  'Strategy': 'Strategy',
-  'Funding': 'Funding',
-  'Tech Cap': 'Tech Capacity',
-  'Tech Inn': 'Tech Innovation'
-}
-
-const FORMULA_COLUMNS = [
-  '1st Year',
-  '2nd Year',
-  '3rd Year',
-  '4th Year',
-  '5th Year',
-  '6th Year',
-  '7th Year',
-  '8th Year',
-  '9th Year',
-  '10th Year'
-]
-
-const ROWS = [
-  'Strategy',
-  'Legal',
-  'Funding',
-  'Tech Capacity',
-  'Tech Innovation',
-  'Skills',
-  'Ethics'
-]
-
-const NEGATIVE_IMPACT_ROWS = [
-  'Large Impact Negative External Infulence',
-  'Medium Impact Negative External Influence',
-  'Small Impact Negative External Influence'
-]
-
-const POSITIVE_IMPACT_ROWS = [
-  'Large Impact Positive External Infulence',
-  'Medium Impact Positive External Influence',
-  'Small Impact Positive External Influence'
-]
+import { FORMULA_ROWS, FORMULA_COLUMNS, ROWS, NEGATIVE_IMPACT_ROWS, POSITIVE_IMPACT_ROWS } from '../utility/constants'
 
 const findFormulaRow = (rowName) => formula.find(f => f.Factors === rowName)
 

@@ -4,6 +4,8 @@ import Line from './Line/Line'
 import Radar from './Radar/Radar'
 import Rule from './Rule'
 
+import Questionnaire from './Questionnaire/Questionnaire'
+
 export default () =>
   <div id='main'>
     {/* <div className='row height0'>
@@ -29,6 +31,7 @@ export default () =>
       >
         <Line />
       </div>
+      <Questionnaire />
       <Rule />
       <Radar />
     </div>

@@ -1,23 +1,15 @@
 import React from 'react'
 import { Radar } from 'react-chartjs-2'
 
+import usa from '/Users/josephtsindos/Downloads/MM_latest/USA-Table 1.csv'
+
 import Colors from '../utility/Colors'
-
-import usa from './data/usa.csv'
-
-const rows = [
-  'Strategy',
-  'Policy',
-  'Funding',
-  'Tech Capacity',
-  'Tech Innovation',
-  'Skills'
-]
+import { ROWS } from '../utility/constants'
 
 const color = Colors.mapColorsToLabels(['USA'])
 
 const data = usa.reduce((accum, entry) => {
-  return rows.includes(entry['Country C']) ? {
+  return ROWS.includes(entry['Country C']) ? {
     ...accum,
     [entry['Country C']]: entry['Maturity Mapping']
   } : accum
