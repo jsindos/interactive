@@ -7,21 +7,24 @@ import csv from './world-forecast.csv'
 
 const dataTransform = (data) => {
   const numberOfDataPoints = Object.entries(data[0]).length - 1
+  // const labels = Array.apply(null, Array(numberOfDataPoints))
+  //   .map((_, i) => `20${19 + i}`)
   const labels = Array.apply(null, Array(numberOfDataPoints))
     .map((_, i) => `Score ${ordinalSuffixOf(i + 1)} Year`)
-  const datasets = data.reduce((accum, country, index) => {
+  const datasets = data.reduce((accum, country) => {
     const color = Colors.mapColorsToLabels([country['Country Name']])[0]
     return accum.concat({
       label: country['Country Name'],
       data: labels.map(o => country[o]),
       fill: false,
-      lineTension: 0.1,
+      lineTension: 0.5,
       // backgroundColor: 'rgba(75,192,192,0.4)',
       borderColor: color,
       borderCapStyle: 'butt',
       borderDash: [],
       borderDashOffset: 0.0,
       borderJoinStyle: 'miter',
+      borderWidth: 3,
       // pointBorderColor: 'rgba(75,192,192,1)',
       pointBackgroundColor: '#fff',
       pointBorderWidth: 1,
@@ -30,7 +33,8 @@ const dataTransform = (data) => {
       // pointHoverBorderColor: 'rgba(220,220,220,1)',
       pointHoverBorderWidth: 2,
       pointRadius: 1,
-      pointHitRadius: 10
+      pointHitRadius: 10,
+      ...country.options
     })
   }, [])
   return { datasets, labels }
@@ -51,7 +55,7 @@ function ordinalSuffixOf (i) {
   return i + 'th'
 }
 
-export default ({userCountry}) => {
+export default ({ userCountry }) => {
   const data = dataTransform(csv.concat([userCountry]))
   return (
     <Line
